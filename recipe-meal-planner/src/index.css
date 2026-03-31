@@ -331,3 +331,32 @@ button {
     height: 200px;
   }
 }
+.search-bar-wrapper {
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: var(--text-color);
+  outline: none;
+  box-shadow: var(--shadow);
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+}
+
+.no-results {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  color: var(--muted-text);
+  box-shadow: var(--shadow);
+}
