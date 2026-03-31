@@ -1,7 +1,15 @@
+import { useState } from 'react';
 import RecipeCard from './RecipeCard';
+import SearchBar from './SearchBar';
 import recipes from '../data/recipes';
 
 function RecipeList() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <section className="recipe-section">
       <div className="container">
@@ -14,11 +22,17 @@ function RecipeList() {
           </p>
         </div>
 
-        <div className="recipe-grid">
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))}
-        </div>
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+        {filteredRecipes.length > 0 ? (
+          <div className="recipe-grid">
+            {filteredRecipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
+        ) : (
+          <p className="no-results">No recipes found for "{searchTerm}".</p>
+        )}
       </div>
     </section>
   );
