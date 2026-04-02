@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import RecipeCard from './RecipeCard';
 import SearchBar from './SearchBar';
+import FilterBar from './FilterBar';
 import recipes from '../data/recipes';
 
 function RecipeList() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredRecipes = recipes.filter((recipe) => {
+    const matchesSearch = recipe.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === 'All' || recipe.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <section className="recipe-section">
@@ -23,6 +32,10 @@ function RecipeList() {
         </div>
 
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <FilterBar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
 
         {filteredRecipes.length > 0 ? (
           <div className="recipe-grid">
@@ -31,7 +44,9 @@ function RecipeList() {
             ))}
           </div>
         ) : (
-          <p className="no-results">No recipes found for "{searchTerm}".</p>
+          <p className="no-results">
+            No recipes found for "{searchTerm}" in {selectedCategory}.
+          </p>
         )}
       </div>
     </section>
