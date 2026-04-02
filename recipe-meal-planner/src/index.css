@@ -381,3 +381,8 @@ button {
 .filter-btn:hover {
   background-color: #fff0e8;
 }
+.active-filter {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
