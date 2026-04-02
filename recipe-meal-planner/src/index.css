@@ -383,6 +383,6 @@ button {
 }
 .active-filter {
   background-color: var(--primary-color);
-  color: white;
+  color: rgb(43, 16, 16);
   border-color: var(--primary-color);
 }
