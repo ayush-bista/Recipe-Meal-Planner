@@ -378,3 +378,6 @@ button {
   transition: 0.3s ease;
   box-shadow: var(--shadow);
 }
+.filter-btn:hover {
+  background-color: #fff0e8;
+}
