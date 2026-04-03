@@ -507,3 +507,23 @@ button {
   font-size: 1rem;
   margin-bottom: 6px;
 }
+.favorite-mini-content p {
+  color: var(--muted-text);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 900px) {
+  .favorites-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorite-mini-card {
+    align-items: flex-start;
+  }
+}
