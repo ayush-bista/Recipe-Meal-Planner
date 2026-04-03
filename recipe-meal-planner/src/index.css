@@ -458,3 +458,18 @@ button {
   box-shadow: var(--shadow);
   transition: 0.3s ease;
 }
+.favorite-btn:hover {
+  transform: scale(1.08);
+}
+
+.favorite-btn.favorited {
+  color: #e63946;
+}
+
+.favorites-section {
+  padding: 10px 0 80px;
+}
+
+.favorites-header {
+  margin-bottom: 28px;
+}
