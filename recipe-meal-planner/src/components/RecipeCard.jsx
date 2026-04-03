@@ -1,7 +1,19 @@
-function RecipeCard({ recipe }) {
+function RecipeCard({ recipe, isFavorite, toggleFavorite }) {
   return (
     <div className="recipe-card">
-      <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+      <div className="recipe-image-wrapper">
+        <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+
+        <button
+          className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavorite(recipe);
+          }}
+        >
+          {isFavorite ? '♥' : '♡'}
+        </button>
+      </div>
 
       <div className="recipe-content">
         <span className="recipe-category">{recipe.category}</span>
