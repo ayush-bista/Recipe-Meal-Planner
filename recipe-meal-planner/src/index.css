@@ -491,3 +491,19 @@ button {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
+.favorite-mini-card:hover {
+  transform: translateY(-4px);
+}
+
+.favorite-mini-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.favorite-mini-content h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
