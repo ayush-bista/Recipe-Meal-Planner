@@ -527,3 +527,17 @@ button {
     align-items: flex-start;
   }
 }
+/* Planner Section */
+.planner-section {
+  padding: 60px 0 100px;
+}
+
+.planner-header {
+  margin-bottom: 30px;
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+}
