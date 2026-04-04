@@ -73,19 +73,7 @@ function RecipeList() {
             </p>
           )}
 
-          <RecipeModal
-            recipe={selectedRecipe}
-            onClose={() => setSelectedRecipe(null)}
-          />
-        </div>
-      </section>
-
-      <FavoritesSection
-        favorites={favorites}
-        onSelectRecipe={setSelectedRecipe}
-      />
-    </>
-  );
-}
+          
+  
 
 export default RecipeList;
