@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RecipeCard from './RecipeCard';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
@@ -11,6 +11,18 @@ function RecipeList() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('favoriteRecipes');
+
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
+  }, [favorites]);
 
   const toggleFavorite = (recipe) => {
     const alreadyFavorite = favorites.some((item) => item.id === recipe.id);
@@ -73,7 +85,19 @@ function RecipeList() {
             </p>
           )}
 
-          
-  
+          <RecipeModal
+            recipe={selectedRecipe}
+            onClose={() => setSelectedRecipe(null)}
+          />
+        </div>
+      </section>
+
+      <FavoritesSection
+        favorites={favorites}
+        onSelectRecipe={setSelectedRecipe}
+      />
+    </>
+  );
+}
 
 export default RecipeList;
