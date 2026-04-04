@@ -579,3 +579,25 @@ button {
   cursor: pointer;
   transition: 0.3s ease;
 }
+.meal-placeholder:hover {
+  background: #ffeae2;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .planner-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .planner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .planner-grid {
+    grid-template-columns: 1fr;
+  }
+}
