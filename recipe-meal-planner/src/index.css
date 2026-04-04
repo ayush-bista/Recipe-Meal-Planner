@@ -551,3 +551,21 @@ button {
   flex-direction: column;
   gap: 12px;
 }
+.day-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Meal Slots */
+.meal-slot {
+  background: #fff6f2;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.meal-type {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  margin-bottom: 6px;
+}
