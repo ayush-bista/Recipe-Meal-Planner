@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
@@ -6,24 +6,26 @@ import RecipeModal from './RecipeModal';
 import FavoritesSection from './FavoritesSection';
 import recipes from '../data/recipes';
 
-function RecipeList() {
+function RecipeList({ setSelectedRecipe, selectedRecipe }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [modalRecipe, setModalRecipe] = useState(null);
   const [favorites, setFavorites] = useState([]);
 
+  // Load favorites from localStorage
   useEffect(() => {
     const savedFavorites = localStorage.getItem('favoriteRecipes');
-
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
   }, []);
 
+  // Save favorites to localStorage
   useEffect(() => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
   }, [favorites]);
 
+  // Toggle favorite
   const toggleFavorite = (recipe) => {
     const alreadyFavorite = favorites.some((item) => item.id === recipe.id);
 
@@ -38,6 +40,7 @@ function RecipeList() {
     return favorites.some((item) => item.id === recipeId);
   };
 
+  // Filtering logic
   const filteredRecipes = recipes.filter((recipe) => {
     const matchesSearch = recipe.title
       .toLowerCase()
@@ -58,18 +61,35 @@ function RecipeList() {
             <h2>Discover delicious recipes for every moment</h2>
           </div>
 
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          {/* Search */}
+          <SearchBar
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
+
+          {/* Filters */}
           <FilterBar
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
 
+          {/* Selected Recipe Indicator */}
+          {selectedRecipe && (
+            <p className="selected-recipe-indicator">
+              Selected: {selectedRecipe.title}
+            </p>
+          )}
+
+          {/* Recipe Grid */}
           {filteredRecipes.length > 0 ? (
             <div className="recipe-grid">
               {filteredRecipes.map((recipe) => (
                 <div
                   key={recipe.id}
-                  onClick={() => setSelectedRecipe(recipe)}
+                  onClick={() => {
+                    setSelectedRecipe(recipe);   // for planner
+                    setModalRecipe(recipe);      // for modal
+                  }}
                 >
                   <RecipeCard
                     recipe={recipe}
@@ -85,13 +105,15 @@ function RecipeList() {
             </p>
           )}
 
+          {/* Modal */}
           <RecipeModal
-            recipe={selectedRecipe}
-            onClose={() => setSelectedRecipe(null)}
+            recipe={modalRecipe}
+            onClose={() => setModalRecipe(null)}
           />
         </div>
       </section>
 
+      {/* Favorites */}
       <FavoritesSection
         favorites={favorites}
         onSelectRecipe={setSelectedRecipe}
