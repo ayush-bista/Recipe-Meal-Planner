@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RecipeList from './components/RecipeList';
 import MealPlanner from './components/MealPlanner';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -12,7 +12,12 @@ function App() {
   useEffect(() => {
     const savedMealPlan = localStorage.getItem('mealPlan');
 
-    useEffect(() => {
+    if (savedMealPlan) {
+      setMealPlan(JSON.parse(savedMealPlan));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('mealPlan', JSON.stringify(mealPlan));
   }, [mealPlan]);
 
