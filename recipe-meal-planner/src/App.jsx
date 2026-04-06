@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RecipeList from './components/RecipeList';
 import MealPlanner from './components/MealPlanner';
-import Footer from './components/Footer';
+import Footer from './components/Footer'; 
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
