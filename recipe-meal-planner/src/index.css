@@ -613,3 +613,10 @@ button {
   font-size: 0.9rem;
   border: 1px solid var(--border-color);
 }
+.shopping-section {
+  padding: 10px 0 100px;
+}
+
+.shopping-header {
+  margin-bottom: 28px;
+}
