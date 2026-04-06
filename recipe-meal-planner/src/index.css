@@ -641,3 +641,7 @@ button {
   width: 18px;
   height: 18px;
 }
+.shopping-item span {
+  font-size: 0.98rem;
+  color: var(--text-color);
+}
