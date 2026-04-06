@@ -9,6 +9,10 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [mealPlan, setMealPlan] = useState({});
 
+  useEffect(() => {
+    const savedMealPlan = localStorage.getItem('mealPlan');
+
+
   return (
     <div className="app">
       <Navbar />
