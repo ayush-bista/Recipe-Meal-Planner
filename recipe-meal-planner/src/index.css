@@ -637,3 +637,7 @@ button {
   box-shadow: var(--shadow);
   cursor: pointer;
 }
+.shopping-item input {
+  width: 18px;
+  height: 18px;
+}
