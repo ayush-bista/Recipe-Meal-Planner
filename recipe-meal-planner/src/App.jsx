@@ -12,6 +12,9 @@ function App() {
   useEffect(() => {
     const savedMealPlan = localStorage.getItem('mealPlan');
 
+    useEffect(() => {
+    localStorage.setItem('mealPlan', JSON.stringify(mealPlan));
+  }, [mealPlan]);
 
   return (
     <div className="app">
