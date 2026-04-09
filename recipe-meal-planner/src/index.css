@@ -650,3 +650,10 @@ button {
     grid-template-columns: 1fr;
   }
 }
+/* General section rhythm */
+.recipe-section,
+.favorites-section,
+.planner-section,
+.shopping-section {
+  position: relative;
+}
