@@ -686,3 +686,11 @@ button {
   box-shadow: 0 12px 30px rgba(255, 122, 89, 0.14);
   transform: translateY(-1px);
 }
+.filter-btn {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
