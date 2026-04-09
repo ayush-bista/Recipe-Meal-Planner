@@ -672,3 +672,12 @@ button {
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
+.section-description {
+  max-width: 720px;
+}
+
+/* Better search */
+.search-input {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
