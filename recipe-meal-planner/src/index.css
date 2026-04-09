@@ -663,3 +663,12 @@ button {
 .shopping-section .container {
   position: relative;
 }
+/* Better headings */
+.section-heading h2,
+.planner-header h2,
+.shopping-header h2,
+.favorites-header h2 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
