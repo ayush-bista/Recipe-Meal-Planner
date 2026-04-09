@@ -953,3 +953,21 @@ button {
   .favorites-header h2 {
     font-size: 1.65rem;
   }
+.selected-recipe-indicator {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .modal-content img {
+    height: 190px;
+  }
+
+  .recipe-content h3 {
+    font-size: 1.15rem;
+  }
+}
