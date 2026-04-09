@@ -657,3 +657,9 @@ button {
 .shopping-section {
   position: relative;
 }
+.recipe-section .container,
+.favorites-section .container,
+.planner-section .container,
+.shopping-section .container {
+  position: relative;
+}
