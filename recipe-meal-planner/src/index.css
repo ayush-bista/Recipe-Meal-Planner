@@ -855,3 +855,89 @@ button {
   transition: transform 0.22s ease, box-shadow 0.22s ease,
     border-color 0.22s ease;
 }
+.shopping-item:hover {
+  transform: translateY(-3px);
+  border-color: #ffd8cb;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+.shopping-item input {
+  accent-color: var(--primary-color);
+}
+
+/* Modal upgrade */
+.modal-overlay {
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  max-width: 560px;
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.modal-content img {
+  height: 260px;
+  object-fit: cover;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.modal-meta {
+  display: inline-block;
+  background: #fff4ed;
+  border: 1px solid #f5ddd0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+}
+
+.modal-content h3 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.modal-content ul li {
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.modal-content p {
+  line-height: 1.7;
+}
+
+.close-btn {
+  width: 38px;
+  height: 38px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+}
+
+.close-btn:hover {
+  background: #ffe9e1;
+  transform: rotate(90deg);
+}
+
+/* Footer */
+.footer {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* Responsive polish */
+@media (max-width: 900px) {
+  .section-heading h2,
+  .planner-header h2,
+  .shopping-header h2,
+  .favorites-header h2 {
+    font-size: 1.9rem;
+  }
