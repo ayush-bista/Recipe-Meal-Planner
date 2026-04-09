@@ -681,3 +681,8 @@ button {
   transition: border-color 0.25s ease, box-shadow 0.25s ease,
     transform 0.25s ease;
 }
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 30px rgba(255, 122, 89, 0.14);
+  transform: translateY(-1px);
+}
