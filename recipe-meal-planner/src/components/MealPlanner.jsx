@@ -28,16 +28,32 @@ function MealPlanner({ selectedRecipe, mealPlan, setMealPlan }) {
     });
   };
 
+  const clearMealPlan = () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to clear the full meal plan?'
+    );
+
+    if (confirmed) {
+      setMealPlan({});
+    }
+  };
+
   return (
     <>
       <section className="planner-section">
         <div className="container">
-          <div className="planner-header">
-            <p className="section-tag">Meal planner</p>
-            <h2>Plan your weekly meals</h2>
-            <p className="section-description">
-              Organize your meals for the week and make cooking effortless.
-            </p>
+          <div className="planner-header planner-header-row">
+            <div>
+              <p className="section-tag">Meal planner</p>
+              <h2>Plan your weekly meals</h2>
+              <p className="section-description">
+                Organize your meals for the week and make cooking effortless.
+              </p>
+            </div>
+
+            <button className="clear-plan-btn" onClick={clearMealPlan}>
+              Clear Planner
+            </button>
           </div>
 
           <div className="planner-grid">
