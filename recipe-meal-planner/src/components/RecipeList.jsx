@@ -11,8 +11,9 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [modalRecipe, setModalRecipe] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [apiRecipes, setApiRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Load favorites from localStorage
   useEffect(() => {
     const savedFavorites = localStorage.getItem('favoriteRecipes');
     if (savedFavorites) {
@@ -20,12 +21,48 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
     }
   }, []);
 
-  // Save favorites to localStorage
   useEffect(() => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
   }, [favorites]);
 
-  // Toggle favorite
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await fetch(
+          'https://www.themealdb.com/api/json/v1/1/search.php?s='
+        );
+        const data = await response.json();
+
+        if (data.meals) {
+          const formattedRecipes = data.meals.slice(0, 12).map((meal) => ({
+            id: meal.idMeal,
+            title: meal.strMeal,
+            category: meal.strCategory || 'Dinner',
+            time: '30 min',
+            difficulty: 'Medium',
+            image: meal.strMealThumb,
+            ingredients: [
+              meal.strIngredient1,
+              meal.strIngredient2,
+              meal.strIngredient3,
+              meal.strIngredient4,
+              meal.strIngredient5,
+            ].filter(Boolean),
+            instructions: meal.strInstructions || 'No instructions available.',
+          }));
+
+          setApiRecipes(formattedRecipes);
+        }
+      } catch (error) {
+        console.error('Failed to fetch recipes:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecipes();
+  }, []);
+
   const toggleFavorite = (recipe) => {
     const alreadyFavorite = favorites.some((item) => item.id === recipe.id);
 
@@ -40,8 +77,9 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
     return favorites.some((item) => item.id === recipeId);
   };
 
-  // Filtering logic
-  const filteredRecipes = recipes.filter((recipe) => {
+  const recipeSource = apiRecipes.length > 0 ? apiRecipes : recipes;
+
+  const filteredRecipes = recipeSource.filter((recipe) => {
     const matchesSearch = recipe.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -61,34 +99,32 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
             <h2>Discover delicious recipes for every moment</h2>
           </div>
 
-          {/* Search */}
           <SearchBar
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
 
-          {/* Filters */}
           <FilterBar
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
 
-          {/* Selected Recipe Indicator */}
           {selectedRecipe && (
             <p className="selected-recipe-indicator">
               Selected: {selectedRecipe.title}
             </p>
           )}
 
-          {/* Recipe Grid */}
-          {filteredRecipes.length > 0 ? (
+          {loading ? (
+            <p className="no-results">Loading recipes...</p>
+          ) : filteredRecipes.length > 0 ? (
             <div className="recipe-grid">
               {filteredRecipes.map((recipe) => (
                 <div
                   key={recipe.id}
                   onClick={() => {
-                    setSelectedRecipe(recipe);   // for planner
-                    setModalRecipe(recipe);      // for modal
+                    setSelectedRecipe(recipe);
+                    setModalRecipe(recipe);
                   }}
                 >
                   <RecipeCard
@@ -105,7 +141,6 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
             </p>
           )}
 
-          {/* Modal */}
           <RecipeModal
             recipe={modalRecipe}
             onClose={() => setModalRecipe(null)}
@@ -113,7 +148,6 @@ function RecipeList({ setSelectedRecipe, selectedRecipe }) {
         </div>
       </section>
 
-      {/* Favorites */}
       <FavoritesSection
         favorites={favorites}
         onSelectRecipe={setSelectedRecipe}
