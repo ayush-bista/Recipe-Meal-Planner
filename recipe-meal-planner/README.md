@@ -1,16 +1,30 @@
-# React + Vite
+# Recipe Finder and Meal Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Recipe Finder and Meal Planner is a modern React web application designed to help users explore recipes, save favorites, organize meals for the week, and automatically generate a shopping list based on planned meals.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse recipes in a clean card layout
+- Search recipes by name
+- Filter recipes by category
+- View recipe details in a modal
+- Save favorite recipes
+- Keep favorites saved with localStorage
+- Plan meals for the full week
+- Save the meal planner with localStorage
+- Generate a shopping list from planned meals
+- Clear the planner when needed
+- Responsive design for desktop and mobile
 
-## React Compiler
+## Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- CSS
+- Vite
+- localStorage
+- TheMealDB API
 
-## Expanding the ESLint configuration
+## Project Goal
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project was built as a step-by-step frontend project to improve practical React skills while creating something useful, interactive, and visually polished.
