@@ -16,6 +16,12 @@ function ShoppingList({ mealPlan }) {
           <p className="section-description">
             Ingredients collected automatically from your planned meals.
           </p>
+
+          {uniqueIngredients.length > 0 && (
+            <p className="shopping-count">
+              Total items: {uniqueIngredients.length}
+            </p>
+          )}
         </div>
 
         {uniqueIngredients.length > 0 ? (
@@ -28,9 +34,10 @@ function ShoppingList({ mealPlan }) {
             ))}
           </div>
         ) : (
-          <p className="no-results">
-            No shopping items yet. Add recipes to your planner first.
-          </p>
+          <div className="empty-state">
+            <h3>No shopping items yet</h3>
+            <p>Add recipes to your meal planner to generate a shopping list.</p>
+          </div>
         )}
       </div>
     </section>
